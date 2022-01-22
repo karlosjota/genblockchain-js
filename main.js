@@ -12,14 +12,30 @@ class Block {
     }
 
     createHash() {
-        return SHA256(this.index + this.date + this.data);
+        return SHA256(this.index + this.date + this.data).toString();
     } // corrección fecha
 }
 
-block = new Block(0, 'primo');  // generará el bloque de nombre primo
-console.log(JSON.stringify(block,null,2));
+//block = new Block(0, 'primo');  // generará el bloque de nombre primo
+//console.log(JSON.stringify(block,null,2));
 
 // Objeto recoge nuestra Blockchain
 class BlockChain {
-    //
+    constructor(genesis) {
+        this.chain = [this.createFirstBlock(genesis)];
+    }
+    createFirstBlock(genesis) {
+        return new Block(0, genesis);
+    }
+    getLastBlock() {
+        return this.chain[this.chain.length-1];
+    }
+    addBlock(data){
+        let prevBlock =  this.getLastBlock();
+        let block = new Block(prevBlock+1, data, prevBlock.hash);
+        this.chain.push(block);
+    }   
 } 
+
+let primoCoin = new BlockChain('genesis de primoCoin a 22 de Enero de 2022');
+console.log(JSON.stringify(primoCoin.chain,null,2));
