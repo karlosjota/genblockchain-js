@@ -1,5 +1,5 @@
 ## TUTORIAL:            Blockchain programado con JavaScript
-## By:                  danielprimo.io
+## By:                  @karlosjota
 ## url:                 https://www.youtube.com/watch?v=3YFVHAkdVQM&ab_channel=danielprimo.io
 ## date:                17/01/2022
 
